@@ -1,38 +1,266 @@
-.App {
+body {
+  margin: 0;
+  background: #abc4de;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.titulo-img {
+  max-width: 40%;
+  height: auto;
+  margin-bottom: 20px; /* para separar del formulario */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 12px;
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  padding: 12px;
+  background: #3b82f6;
   color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: #2563eb;
 }
 
-@keyframes App-logo-spin {
+button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ef4444;
+  margin-top: 10px;
+}
+
+.answer {
+  margin-top: 25px;
+  animation: fadeIn 0.5s ease;
+}
+
+.answer h2 {
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.answer img {
+  animation: pulse 0.6s ease;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+
+.spinner {
+  margin: 20px auto;
+  border: 6px solid #e5e7eb;
+  border-top: 6px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+
+.history {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.history h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #374151;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: background 0.3s;
+}
+
+.history li:hover {
+  background: #f3f4f6;
+}
+
+.history img {
+  max-width: 100px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.toggle-history-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.toggle-history-btn:hover {
+  background: #2563eb;
+}
+
+/* Modo oscuro */
+body.dark-body {
+  background: #111827;
+}
+
+.container.dark {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.container.dark h1,
+.container.dark h3 {
+  color: #f9fafb;
+}
+
+.container.dark input {
+  background: #374151;
+  color: white;
+  border: 1px solid #4b5563;
+}
+
+.container.dark input::placeholder {
+  color: #9ca3af;
+}
+
+.container.dark button,
+.container.dark .toggle-history-btn {
+  background: #4b5563;
+}
+
+.container.dark button:hover,
+.container.dark .toggle-history-btn:hover {
+  background: #6b7280;
+}
+
+.container.dark .answer h2 {
+  color: #f9fafb;
+}
+
+.container.dark .history li {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.container.dark .history li:hover {
+  background: #4b5563;
+}
+
+
+.darkmode-wrapper {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20px;
+}
+
+.darkmode-toggle {
+  padding: 8px 12px;
+  background: #374151;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.darkmode-toggle:hover {
+  background: #111827;
+}
+
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  input {
+    font-size: 16px;
+    padding: 10px;
+  }
+  button,
+  .toggle-history-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+  .answer img,
+  .history img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 20px;
+  }
+  input {
+    font-size: 15px;
+  }
+  button,
+  .toggle-history-btn {
+    font-size: 15px;
+    padding: 10px;
   }
 }
